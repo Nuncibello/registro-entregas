@@ -1,0 +1,30 @@
+name: pruebas
+
+# Cada cambio compila el contrato y corre las pruebas antes de que llegue a una red.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  hardhat:
+    name: hardhat test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Compilar el contrato
+        run: npx hardhat compile
+
+      # Corren sobre la cadena local de Hardhat: no hace falta clave ni fondos.
+      - name: Correr las pruebas
+        run: npx hardhat test

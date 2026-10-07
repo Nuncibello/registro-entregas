@@ -1,0 +1,15 @@
+{
+  "name": "registro-entregas",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "compilar": "hardhat compile",
+    "probar": "hardhat test",
+    "desplegar": "hardhat run scripts/desplegar.js --network sepolia",
+    "desplegar:base": "hardhat run scripts/desplegar.js --network baseSepolia"
+  },
+  "dependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "hardhat": "^2.29.1"
+  }
+}
